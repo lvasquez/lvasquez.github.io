@@ -1,0 +1,120 @@
+---
+layout: post
+title: SignalR Demo
+categories:
+- Microsoft
+tags:
+- ASP.NET
+- ASP.NET 4.5
+- Microsoft
+- SignalR
+status: publish
+type: post
+published: true
+description: Example with SignalR
+meta:
+  _wpas_skip_922231: '1'
+  geo_public: '0'
+  publicize_twitter_user: levb20
+---
+
+<p>
+He aquí una de las nuevas features de ASP.NET 4.5, <a href="http://signalr.net/" target="_blank">SignalR</a> que es una opción más para poder trabajar aplicaciones en tiempo real, entiendase envio asincrono de datos entre servidor y clientes en tiempo real, esta es otra solución mas que nos ofrece nuestro querido ASP.NET, porsupuesto que también tenemos la opción de los Microsoft WebSockets que ahora ya tiene soporte nativo en Windows 8 que posteare mas adelante.
+Para enteder mas como funciona SignalR aqui les dejo un excelente post que encontre donde explican mas detalladamente.
+<a href="http://www.variablenotfound.com/2012/01/introduccion-signalr-i-conceptos.html" target="_blank">http://www.variablenotfound.com/2012/01/introduccion-signalr-i-conceptos.html </a>
+</br></br>
+</p>
+
+<p>
+Yo aquí les dejo un pequeño ejemplo del código que pueden descargar de <a href="https://github.com/lvasquez/SignalR" target="_blank">aqui!!</a> y basicamente es el ejemplo demo que nos da Pluralsight y que es muy facil.
+</br>
+Primero cremos un Proyecto ASP.NET Empty Web Application, desde el Manage Nuget Packages agregamos jQuery, y creamos una carpeta dentro de la raiz de nuestro proyecto llamada HUB, dentro de ella agremos un nuevo item tipo <strong>SignalR Hub Class</strong> y la llamamos BabyNamesHub, al agregar este tipo de clase se agregaran unos js propios de SignalR en nuestra carpeta de scripts. Dentro de nuestra clase BabyNamesHub escribimos el siguiente codigo
+</p>
+
+{% highlight csharp %}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Microsoft.AspNet.SignalR;
+
+namespace SignalRSample.Hubs
+{
+    public class BabyNamesHub : Hub
+    {
+        public void AddBabyName(string name) 
+        {
+            Clients.All.babyNamed(name);
+        }
+    }
+}
+
+{% endhighlight %}
+
+<p>
+la clase hereda una clase abstracta llamada Hub y creamos una funcion que recibe un parametro tipo string, utlizamos la clase de SignalR llamada Clients y All para que todos los clientes se conecten a la vez.
+En nuestra carpeta Scripts creamos el siguiente script babyNames.js
+</p>
+
+{% highlight javascript %}
+/// <reference path="jquery-2.0.3.js" />
+/// <reference path="jquery.signalR-1.0.0.js" />
+
+$(document).ready(function () {
+    var hub = $.connection.babyNamesHub,
+        babyNamesTable = $('#BabyNamesTable'),
+        babyName = $('#BabyName');
+
+    hub.client.babyNamed = function (name) {
+        babyNamesTable.append('<tr><td>' + name + '</td></tr>');
+        babyName.val('');
+    };
+
+    $.connection.hub.start().done(function () {
+        $('#AddButton').click(function () {
+            var name = babyName.val();
+            hub.server.addBabyName(name);
+        });
+    });
+});
+{% endhighlight %}
+después creamos nuestro archivo html llamado BabyNames.html
+{% highlight html %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-2.0.3.js"></script>
+    <script src="Scripts/jquery.signalR-1.0.0.js"></script>
+    <script src="/signalR/hubs"></script>
+    <script src="Scripts/babyNames.js"></script>
+</head>
+<body>
+    <h1>Baby Names</h1>
+    Proposed Name: <input type="text"  id="BabyName" />&nbsp;<button id ="AddButton">Add Name</button>
+    <br /><br />
+    <table id="BabyNamesTable"></table>
+</body>
+</html>
+{% endhighlight %}
+y por ultimo agregamos un Global.asax a nuestro proyecto y agregamos esto en el Application_Start
+{% highlight csharp %}
+ protected void Application_Start(object sender, EventArgs e)
+        {
+            RouteTable.Routes.MapHubs();
+        }
+{% endhighlight %}
+y resolvemos la con la referencia
+{% highlight csharp %}
+using System.Web.Routing;
+{% endhighlight %}
+y obtendremos esto, un pequeño demo de una aplicacion en tiempo real como otra alternativa a Microsoft Websockets u otras cosas como NodeJs, RabbitMQ, MassTransit, etc.
+
+<a href="http://lvasquezdotcom.files.wordpress.com/2013/08/signalr1.jpg"><img src="http://lvasquezdotcom.files.wordpress.com/2013/08/signalr1.jpg" alt="signalR" width="1024" height="543" class="aligncenter size-full wp-image-297" /></a>
+
+Referencias:
+<ul>
+<li><a href="http://pluralsight.com/training/Player?author=dan-wahlin&amp;name=aspnet-webforms45-new-features-m3-framework&amp;mode=live&amp;clip=12&amp;course=aspnet-webforms45-new-features" target="_blank">http://pluralsight.com/training/Player?author=dan-wahlin&amp;name=aspnet-webforms45-new-features-m3-framework&amp;mode=live&amp;clip=12&amp;course=aspnet-webforms45-new-features</a></li>
+<li><a href="http://www.variablenotfound.com/2012/01/introduccion-signalr-i-conceptos.html" target="_blank">http://www.variablenotfound.com/2012/01/introduccion-signalr-i-conceptos.html</a></li>
+</ul>

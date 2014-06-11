@@ -1,0 +1,91 @@
+---
+layout: post
+title: Dynamic Combobox with CodeIgniter
+categories:
+- CodeIgniter
+- PHP
+tags:
+- CodeIgniter
+- DynamicCombobox
+- PHP
+status: publish
+type: post
+published: true
+description: Create a Dynamic Combobox with CodeIgniter
+meta:
+  geo_public: '0'
+  publicize_twitter_user: levb20
+---
+hey everyone, this is a easy one level combobox with database and works with the last version of CI 2.1.0, so first we need to create our database like this:
+{% highlight sql %}
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `album`
+-- ----------------------------
+DROP TABLE IF EXISTS `album`;
+CREATE TABLE `album` (
+  `id` int(4) NOT NULL auto_increment,
+  `title` varchar(50) default NULL,
+  `active` int(4) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+ 
+-- ----------------------------
+-- Records of album
+-- ----------------------------
+INSERT INTO `album` VALUES ('1', 'Crush', '1');
+INSERT INTO `album` VALUES ('2', 'Slippery When Wet ', '1');
+INSERT INTO `album` VALUES ('3', 'New Jersey', '1');
+INSERT INTO `album` VALUES ('4', 'Have a Nice Day', '1');
+INSERT INTO `album` VALUES ('5', 'CrossRoad', '1');
+{% endhighlight %}
+and this is the <strong>Model</strong> (combobox_model.php)
+{% highlight php %}
+class combobox_model extends CI_Model {
+    function getalbums() {
+        $data = array();
+        $query = $this->db->get('album');
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row){
+                    $data[] = $row;
+                }
+        }
+        $query->free_result();
+        return $data;
+    }
+}
+{% endhighlight %}
+
+My <strong>Controller</strong> (combobox.php)
+
+{% highlight php %}
+class combobox extends CI_Controller  {
+ 
+   function dynamic_combobox(){
+     // retrieve the album and add to the data array
+        $this->load->model('combobox_model');
+        $data['album'] = $this->combobox_model->getalbums();
+        $this->load->view('combobox', $data);
+   }
+
+}
+{% endhighlight %}
+
+and finally my <strong>View</strong> (combobox.php)
+
+{% highlight php %}
+echo form_open('form/register');
+echo "<p><label for='album'>Album: </label>";
+echo "<select name='id' id='id'>";
+if (count($album)) {
+    foreach ($album as $list) {
+        echo "<option value='". $list['id'] . "'>" . $list['title'] . "</option>";
+    }
+}
+echo "</select><br/>";
+echo form_submit('submit','register');
+echo form_close();
+{% endhighlight %}
+
+so you got this:
+<a href="http://lvasquezdotcom.files.wordpress.com/2013/08/combobox.jpg"><img src="http://lvasquezdotcom.files.wordpress.com/2013/08/combobox.jpg" alt="combobox" width="771" height="286" class="aligncenter size-full wp-image-268" /></a>

@@ -1,0 +1,60 @@
+---
+layout: post
+title: Check Digit Algorithm mod 11
+categories:
+- c#
+tags:
+- algorithm
+- C++
+- check digit
+- mod 11
+status: publish
+type: post
+published: true
+description: C# Example with Check Digit Algorithm mod 11
+meta:
+  publicize_twitter_user: levb20
+---
+today I had a evaluation exam and one of the problems required to create a function in any language to implement the Check Digit Algorithm Mod 11, one of the interesting thing is that I never implemented this algorithm but thanks God they gave me the example and the steps, so basically the steps are these:
+
+The procedure for calculating the check digit, which may be carried out automatically in a computer, is as follows:
+<ol>
+	<li>Take the first seven digits of the ISSN (the check digit is the eighth and last digit): 0317847</li>
+	<li>Take the weighting factors associated with each digit : 8 7 6 5 4 3 2</li>
+	<li>Multiply each digit in turn by its weighting factor: 0 21 6 35 32 12 14</li>
+	<li>Add these numbers together: 0+21+6+35+32+12+14 = 120</li>
+	<li>Divide this sum by the modulus 11: 120:11 =10 remainder 10</li>
+	<li>Substract the remainder from 11: 11-10 = 1</li>
+	<li>Add the remainder, which is the check digit, to the extreme right (low order) position of the base number of the ISSN: 0317-8471</li>
+</ol>
+If the remainder is 10, substitute an upper case X in the check digit position. If there is no remainder, put a zero in the check digit position.
+
+and the code for c# is this:
+
+{% highlight csharp %}
+public class Mod11
+    {
+        public static string AddCheckDigit(string number)
+        {
+            int Sum = 0;
+            for (int i = number.Length - 1, Multiplier = 2; i >= 0; i--)
+            {
+                Sum += (int)char.GetNumericValue(number[i]) * Multiplier;
+
+                if (++Multiplier == 8) Multiplier = 2;
+            }
+            string Validator = (11 - (Sum % 11)).ToString();
+
+            if (Validator == "11") Validator = "0";
+            else if (Validator == "10") Validator = "X";
+
+            return number + Validator;
+        }
+    }
+{% endhighlight %}
+as you can see is not a difficult code is a short code but requires a little of logic.
+</br>
+References:
+<ul>
+<li><a href="http://www.pgrocer.net/Cis51/mod11.html" target="_blank">http://www.pgrocer.net/Cis51/mod11.html</a></li>
+</ul>

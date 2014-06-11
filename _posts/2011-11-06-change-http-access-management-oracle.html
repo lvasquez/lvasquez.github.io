@@ -1,0 +1,25 @@
+---
+layout: post
+title: Change HTTP Access management Oracle (Apex)
+categories:
+- ORACLE
+tags: []
+status: publish
+type: post
+published: true
+description: Change HTTP Access Management Oracle to local and remote clients
+meta:
+  _wpas_done_twitter: '1'
+  _wpas_skip_fb: '1'
+---
+well, if you want to change your local  HTTP access management to local server and remote clients you just only need to execute this:
+
+Fist you need to connect to the SQLPLUS with system user, like this(in my case):
+since MS-DOS, type this:
+<blockquote><strong>sqlplus user/password@host as sysdba</strong></blockquote>
+user: system or sys
+password: your password
+host: your host
+and once connected to the sql plus, type this:
+<blockquote><strong>EXEC DBMS_XDB.SETLISTENERLOCALACCESS(FALSE);</strong></blockquote>
+and that's it

@@ -4,7 +4,7 @@
 	
 <article>
 
-	<div class="col-sm-10">
+	<div class="col-sm-12">
 	 <span class="post-date">
 	   {% assign d = page.date | date: "%d" | plus:'0' %}
 	   {{ page.date | date: "%B" }} 
@@ -115,6 +115,13 @@
 
 		<hr>
 	</div>
+	
+	{% if site.disqus_short_name and page.comments == true %}
+	<section id="comment">
+		<h1 class="title">Comments</h1>
+		<div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
+	</section>
+	{% endif %}
 	
 	<div class="col-sm-2 sidebar-2">
 	

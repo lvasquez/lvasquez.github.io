@@ -7,15 +7,15 @@ pygments: true
 
 title: Luis' Blog
 description: .net Rocks!!
+disqus_shortname: lvasquez20
+url: http://lvasquez.github.io
 author:
   name: Luis Vásquez
   email: levb20@hotmail.com
   github: lvasquez
   twitter: levb20
-  pinterest: asd123
-  linkedin: asd123
-  bio: Software Development!
-  email_md5: 726351295ec82e145928582f595aa3aa
+  bio: Software Development! Open Source, TDD and Coffee =)
+  email_md5: 63b699e76ea5e7891f6e60b7825777a6
 markdown: rdiscount
 rss_path: feed.xml
 categories_path: categories.html
@@ -27,6 +27,13 @@ encoding: utf-8
 timezone: America/Guatemala
 future: true
 markdown: kramdown
+
+# Disqus Comments
+disqus_short_name: impossiblethoughts
+disqus_show_comment_count: true
+
+# Google Analytics
+google_analytics_tracking_id: UA-47464063-1
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink:   /:year/:month/:day/:title/
