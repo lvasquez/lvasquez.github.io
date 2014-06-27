@@ -3,6 +3,13 @@ layout: post
 title: Configure RavenDB ASP MVC
 comments: true
 description: How to configure RavenDB with ASP MVC since zero using Visual Studio 2013 and ASP MVC 5
+categories:
+- ASP MVC
+- RavenDB
+tags:
+- ASP MVC 5
+- Visual Studio 2013
+- RavenDB
 published: true
 ---
 
@@ -22,7 +29,7 @@ This will be installed all that we need to start to work, so now we need to crea
 by default ASP MVC uses DefaultControllerFactory class for creating controller after receiving request from Route Handler.
 This diagrams shows the request processing:
 
-![alt tag](http://www.lvasquez.github.io/images/requestprocessing.png)
+![alt tag](http://lvasquez.github.io/images/requestprocessing.png)
 
 So our ControllerFactory should be like this:
 
@@ -462,7 +469,7 @@ and Delete View
 </div>
 {% endhighlight %}
 
-![alt tag](http://www.lvasquez.github.io/images/RavenIndex.png)
+![alt tag](http://lvasquez.github.io/images/RavenIndex.png)
 
 and here is some great references:
 
