@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Configure RavenDB ASP MVC
+title: Configure RavenDB with ASP MVC
 comments: true
-description: How to configure RavenDB with ASP MVC since zero using Visual Studio 2013 and ASP MVC 5
+description: How to configure RavenDB with ASP MVC step by step using Visual Studio 2013 and ASP MVC 5
 categories:
 - ASP MVC
 - RavenDB
