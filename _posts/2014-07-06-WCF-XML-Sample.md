@@ -2,7 +2,7 @@
 layout: post
 title: WCF Serialize and DeSerialize XML Sample
 comments: true
-description: WCF Serialize and DeSerialize XML with generic function Sample
+description: WCF Sample how Serialize Object to XML and DeSerialize XML to Object with generic function
 categories:
 - WCF
 - c#
