@@ -13,9 +13,14 @@ tags:
 published: true
 ---
 
-This is a little example how to configure step by step RavenDB with ASP MVC, so how we know RavenDB is a NoSQL database base on Document database.
+This is a little example how to configure step by step RavenDB with ASP MVC in base of the first reference at the end of the post.
 
-In my case I'm using Visual Studio 2013 and ASP MVC 5, **You need to Run Visual Studio as Administrator**.
+So how we know RavenDB is a NoSQL database base on Document database and RavenDB can run in one of two modes to connecting to data store:
+
+* a client/server mode, where communication is made via HTTP;
+* an embedded mode, in which the client API makes direct calls against the Database API.
+
+In this case I will use the embedded mode, also I'm using Visual Studio 2013 and ASP MVC 5, **You need to Run Visual Studio as Administrator**.
 
 So the first thing that we have to do is create a Empty ASP MVC project without Authentication
 
@@ -248,231 +253,13 @@ now our controller need to inherit from RavenController to pass the IDocument St
         }
 {% endhighlight %}
 
-so our views 
-
-Index View
-{% highlight csharp %}
-@model IEnumerable<AspMvcRavenDBSample.Models.Customer>
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<h2>Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-</table>
-{% endhighlight %}
-
-
-Create View
-{% highlight csharp %}
-@model AspMvcRavenDBSample.Models.Customer
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<h2>Create</h2>
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Customer</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-{% endhighlight %}
-
-Edit View
-{% highlight csharp %}
-@model AspMvcRavenDBSample.Models.Customer
-@{
-    ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<h2>Edit</h2>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Customer</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-{% endhighlight %}
-
-
-Detail View
-{% highlight csharp %}
-@model AspMvcRavenDBSample.Models.Customer
-@{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<h2>Details</h2>
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-{% endhighlight %}
-
-
-and Delete View
-{% highlight csharp %}
-@model AspMvcRavenDBSample.Models.Customer
-@{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<h2>Delete</h2>
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
-{% endhighlight %}
+so finally we just need to create our views in base to our Customer Model, also you can download the sourcecode **[here!](https://onedrive.live.com/?cid=ab0e3e430bc079dc&id=AB0E3E430BC079DC%2113333)**.
 
 ![alt tag](http://lvasquez.github.io/images/RavenIndex.png)
 
 and here is some great references:
 
+* <a target="_blank" href="http://www.dotnetcurry.com/showarticle.aspx?ID=787">http://www.dotnetcurry.com/showarticle.aspx?ID=787</a>
 * <a target="_blank" href="http://www.youtube.com/watch?v=qI_g07C_Q5I">http://www.youtube.com/watch?v=qI_g07C_Q5I</a>
 * <a target="_blank" href="http://ravendb.net/docs/2.5/intro/what-is-nosql">http://ravendb.net/docs/2.5/intro/what-is-nosql</a>
 * <a target="_blank" href="http://www.codeproject.com/Tips/732449/Understanding-and-Extending-Controller-Factory-i">http://www.codeproject.com/Tips/732449/Understanding-and-Extending-Controller-Factory-i</a>
