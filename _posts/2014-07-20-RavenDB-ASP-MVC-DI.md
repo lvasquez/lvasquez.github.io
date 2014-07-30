@@ -21,7 +21,7 @@ Now I will show how to configure with client/server mode, also in this time I wi
 
 So basically my structure of the solution it this:
 
-* **MvcRavenDBSample** (this should be called something like this "MvcRavenDBSample.Web") -> My MVC project
+* **MvcRavenDBSample.Web** -> My MVC project
 * **MvcRavenDBSample.Data** -> My Services and Repositories
 * **MvcRavenDBSample.Domain** -> My Models
 
