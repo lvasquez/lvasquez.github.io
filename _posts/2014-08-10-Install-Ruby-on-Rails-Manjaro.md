@@ -2,10 +2,19 @@
 layout: post
 title: Install Ruby on Rails on Manjaro Linux
 comments: true
-description: How to install Ruby on Rails on Manjaro Linux
+description: How to install Ruby on Rails on Manjaro Linux or any Arch distribution
 published: true
+categories:
+- linux
+tags:
+- ruby
+- ruby on rails
+- manjaro
+- linux
+- arch
 ---
 
+I based this installation from the official arch documentation wiki including a couple specific steps.
 
 Rails requires nodejs package so we need to install nodejs
 
@@ -41,7 +50,7 @@ save it, now we need to restart our shell for the changes to take effect. You ca
 exec $SHELL
 {% endhighlight %}
 
-now we can proceed with installing rails, but before that we need to run the following commands as root
+now we can proceed with installing rails, **but before that, we need to run the following commands as root**
 
 {% highlight text %}
 gem install rails --no-document
