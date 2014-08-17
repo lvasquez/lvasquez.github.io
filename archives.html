@@ -1,0 +1,15 @@
+---
+layout: page
+title: Archives
+header: Archives
+group: navigation
+---
+
+<div id="archive-list" style="padding: 0 5%">
+{% for post in site.posts reverse %}
+{% if post.layout == 'post' %}
+	{% include archive_post.html %}
+{% endif %}
+{% endfor %}
+  </ul>
+</div>

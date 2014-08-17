@@ -19,6 +19,7 @@ author:
 markdown: rdiscount
 rss_path: feed.xml
 categories_path: categories.html
+archives_path: archives.html
 tags_path: tags.html
 about_path: about.html
 encoding: utf-8

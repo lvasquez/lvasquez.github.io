@@ -36,6 +36,8 @@ a.nav-link i{
 }
 a.nav-link:hover { color: #777 }
 
+
+
 #bio {
 	font-family: "Courier New", Courier, monospace;
 	font-size: 11px;
@@ -136,6 +138,14 @@ article.home h1 a:hover,
 article.home h2 a:hover,
 article.home h3 a:hover,
 article.home h4 a:hover {
+	color: #A4A4A4;
+}
+
+#archive-list h4 a {
+	color: #424242;
+}
+
+#archive-list h4 a:hover {
 	color: #A4A4A4;
 }
 
