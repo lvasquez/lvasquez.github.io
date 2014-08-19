@@ -149,6 +149,14 @@ article.home h4 a:hover {
 	color: #A4A4A4;
 }
 
+.sidebar-header h4 a {
+	color: #424242;
+}
+
+.sidebar-header h4 a:hover {
+	color: #A4A4A4;
+}
+
 .author .author-image {
   float: left;
   margin-right: 20px;
