@@ -34,7 +34,7 @@ tags:
 }
 </style>
 
-Working in a new project I found this really cool templates for bootstrap and one in particular I really liked and is this one.
+Working in a new project I found these really cool templates for bootstrap and one in particular I really liked and is this one.
 
 <div class="row previews" align="center">
 	<div class="thumbnail">
