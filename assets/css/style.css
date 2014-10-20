@@ -202,3 +202,23 @@ footer {
     left: inherit;
     right: 0px;
 }
+
+.previews .thumbnail {
+    margin-bottom: 30px;
+}
+.previews .thumbnail {
+    background-image: url("/assets/img/premium-bg.png");
+    margin-bottom: 15px;
+    text-align: center;
+}
+.thumbnail {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: block;
+    line-height: 1.42857;
+    margin-bottom: 20px;
+    padding: 4px;
+    transition: all 0.2s ease-in-out 0s;
+	max-width: 80%;
+}

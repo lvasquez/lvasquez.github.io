@@ -6,39 +6,19 @@ description: Bootstrap sb-admin template with ASP MVC and Dynamic Menu
 published: true
 categories:
 - ASP MVC
+- Bootstrap
 tags:
 - bootstrap
 - template
 - aspmvc
 ---
 
-<style>
-.previews .thumbnail {
-    margin-bottom: 30px;
-}
-.previews .thumbnail {
-    background-image: url("/assets/img/premium-bg.png");
-    margin-bottom: 15px;
-    text-align: center;
-}
-.thumbnail {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    display: block;
-    line-height: 1.42857;
-    margin-bottom: 20px;
-    padding: 4px;
-    transition: all 0.2s ease-in-out 0s;
-	max-width: 80%;
-}
-</style>
 
 Working in a new project I found these really cool templates for bootstrap and one in particular I really liked and is this one.
 
 <div class="row previews" align="center">
 	<div class="thumbnail">
-		<a class="post-image-link" href="/template-overviews/sb-admin">
+		<a class="post-image-link" href="/images/sb-admin.jpg">
 		<p>
 		<img class="img-responsive" alt="Free Bootstrap Admin Template - SB Admin" src="/images/sb-admin.jpg">
 		</p>
