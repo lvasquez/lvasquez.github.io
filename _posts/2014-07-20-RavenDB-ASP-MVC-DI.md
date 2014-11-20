@@ -1,6 +1,6 @@
 ---
 layout: post
-title: RavenDB with ASP MVC using Dependency Injection
+title: RavenDB, ASP MVC and Unity
 comments: true
 description: How to configure RavenDB with ASP MVC using Dependency Injection
 categories:
@@ -36,12 +36,12 @@ for how to create an properly architecture in one solution.
 So this is my dummy model
 
 {% highlight csharp %}
-	public class Customer
-	{
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public string Address { get; set; }
-	}
+public class Customer
+{
+	public int Id { get; set; }
+	public string Name { get; set; }
+	public string Address { get; set; }
+}
 {% endhighlight %}
 
 now we can pass to our MvcRavenDBSample.Data class project
@@ -58,80 +58,79 @@ Now we can create our Repositories Services
 
 {% highlight csharp %}
  public interface ICustomerService
-    {
-        IEnumerable<Customer> GetCustomers();
-        Customer Create(Customer customer);
-        Customer Read(int id);
-        Customer Update(Customer customer);
-        Customer Delete(int id);
-    }
+{
+	IEnumerable<Customer> GetCustomers();
+	Customer Create(Customer customer);
+	Customer Read(int id);
+	Customer Update(Customer customer);
+	Customer Delete(int id);
+}
 {% endhighlight %}
 
 {% highlight csharp %}
  public class CustomerServices : ICustomerService
-    {
+{
+	DocumentStore _store = null;
 
-        DocumentStore _store = null;
+	public CustomerServices(string url)
+	{
+		_store = new DocumentStore() { Url = url };
+		_store.Initialize();
+	}
+	
+	public IEnumerable<Customer> GetCustomers()
+	{
+		using (var documentSession = _store.OpenSession())
+		{
+			var list = documentSession.Query<Customer>().ToList();
+			return list;
+		}
+	}
 
-        public CustomerServices(string url)
-        {
-            _store = new DocumentStore() { Url = url };
-            _store.Initialize();
-        }
-        
-        public IEnumerable<Customer> GetCustomers()
-        {
-            using (var documentSession = _store.OpenSession())
-            {
-                var list = documentSession.Query<Customer>().ToList();
-                return list;
-            }
-        }
+	public Customer Create(Customer customer)
+	{
+		using (var documentSession = _store.OpenSession())
+		{
+			documentSession.Store(customer);
+			documentSession.SaveChanges();
+			return customer;
+		}
+	}
 
-        public Customer Create(Customer customer)
-        {
-            using (var documentSession = _store.OpenSession())
-            {
-                documentSession.Store(customer);
-                documentSession.SaveChanges();
-                return customer;
-            }
-        }
+	public Customer Read(int id)
+	{
+		using (var documentSession = _store.OpenSession())
+		{
+			var customer = documentSession.Load<Customer>(id);
+			return customer;
+		}
+	}
 
-        public Customer Read(int id)
-        {
-            using (var documentSession = _store.OpenSession())
-            {
-                var customer = documentSession.Load<Customer>(id);
-                return customer;
-            }
-        }
+	public Customer Update(Customer customer)
+	{
+		using (var documentSession = _store.OpenSession())
+		{
+			Customer currentCustomer = documentSession.Load<Customer>(customer.Id);
+			currentCustomer.Name = customer.Name;
+			currentCustomer.Address = customer.Address;
 
-        public Customer Update(Customer customer)
-        {
-            using (var documentSession = _store.OpenSession())
-            {
-                Customer currentCustomer = documentSession.Load<Customer>(customer.Id);
-                currentCustomer.Name = customer.Name;
-                currentCustomer.Address = customer.Address;
+			documentSession.Store(currentCustomer);
+			documentSession.SaveChanges();
+			return customer;
+		}
+	}
 
-                documentSession.Store(currentCustomer);
-                documentSession.SaveChanges();
-                return customer;
-            }
-        }
-
-        public Customer Delete(int id)
-        {
-            using (var documentSession = _store.OpenSession())
-            {
-                var customer = documentSession.Load<Customer>(id);
-                documentSession.Delete<Customer>(customer);
-                documentSession.SaveChanges();
-                return customer;
-            }
-        }
-    }
+	public Customer Delete(int id)
+	{
+		using (var documentSession = _store.OpenSession())
+		{
+			var customer = documentSession.Load<Customer>(id);
+			documentSession.Delete<Customer>(customer);
+			documentSession.SaveChanges();
+			return customer;
+		}
+	}
+}
 {% endhighlight %}
 
 so as you can see I pass in the constructor the url to connect to RavenDB in client/server mode. So now
@@ -155,82 +154,82 @@ and now we can create our CustomerController
 
 {% highlight csharp %}
 public class CustomerController : Controller
-    {
-        readonly ICustomerService _customerService;
+{
+	readonly ICustomerService _customerService;
 
-        public CustomerController(ICustomerService customerService)
-        {
-            _customerService = customerService;
-        }
-        // GET: Customer
-        public ActionResult Index()
-        {
-            var list = this._customerService.GetCustomers().ToList();
-            return View(list);
-        }
+	public CustomerController(ICustomerService customerService)
+	{
+		_customerService = customerService;
+	}
+	// GET: Customer
+	public ActionResult Index()
+	{
+		var list = this._customerService.GetCustomers().ToList();
+		return View(list);
+	}
 
-        public ActionResult Details(int id)
-        {
-            var customer = this._customerService.Read(id);
-            return View(customer);
-        }
+	public ActionResult Details(int id)
+	{
+		var customer = this._customerService.Read(id);
+		return View(customer);
+	}
 
-        public ActionResult Create()
-        {
-            return View("Create", new Customer());
-        }
+	public ActionResult Create()
+	{
+		return View("Create", new Customer());
+	}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-                this._customerService.Create(customer);
-                return RedirectToAction("Index");
-            }
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	public ActionResult Create(Customer customer)
+	{
+		if (ModelState.IsValid)
+		{
+			this._customerService.Create(customer);
+			return RedirectToAction("Index");
+		}
 
-            return View(customer);
-        }
+		return View(customer);
+	}
 
-        public ActionResult Edit(int id)
-        {
-            var customer = this._customerService.Read(id);
+	public ActionResult Edit(int id)
+	{
+		var customer = this._customerService.Read(id);
 
-            if (customer == null)
-                return HttpNotFound();
-            return View(customer);
-        }
+		if (customer == null)
+			return HttpNotFound();
+		return View(customer);
+	}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-                this._customerService.Update(customer);
-                return RedirectToAction("Index");
-            }
-            return View(customer);
-        }
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	public ActionResult Edit(Customer customer)
+	{
+		if (ModelState.IsValid)
+		{
+			this._customerService.Update(customer);
+			return RedirectToAction("Index");
+		}
+		return View(customer);
+	}
 
-        public ActionResult Delete(int id = 0)
-        {
-            var customer = this._customerService.Read(id);
+	public ActionResult Delete(int id = 0)
+	{
+		var customer = this._customerService.Read(id);
 
-            if (customer == null)
-                return HttpNotFound();
-            return View(customer);
-        }
+		if (customer == null)
+			return HttpNotFound();
+		return View(customer);
+	}
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            this._customerService.Delete(id);
-            return RedirectToAction("Index");
-        }
-    }
+	[HttpPost, ActionName("Delete")]
+	[ValidateAntiForgeryToken]
+	public ActionResult DeleteConfirmed(int id)
+	{
+		this._customerService.Delete(id);
+		return RedirectToAction("Index");
+	}
+}
 {% endhighlight %}
 
 As you can see our actions are really clean and easy to test. So finally we just need initialize the RavenDB Server, you can download from **[here!](http://ravendb.net/download)**.

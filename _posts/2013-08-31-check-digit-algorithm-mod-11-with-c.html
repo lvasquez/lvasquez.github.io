@@ -16,8 +16,10 @@ description: C# Example with Check Digit Algorithm mod 11
 meta:
   publicize_twitter_user: levb20
 ---
+<p>
 today I had a evaluation exam and one of the problems required to create a function in any language to implement the Check Digit Algorithm Mod 11, one of the interesting thing is that I never implemented this algorithm but thanks God they gave me the example and the steps, so basically the steps are these:
-
+</p>
+<p>
 The procedure for calculating the check digit, which may be carried out automatically in a computer, is as follows:
 <ol>
 	<li>Take the first seven digits of the ISSN (the check digit is the eighth and last digit): 0317847</li>
@@ -28,10 +30,12 @@ The procedure for calculating the check digit, which may be carried out automati
 	<li>Substract the remainder from 11: 11-10 = 1</li>
 	<li>Add the remainder, which is the check digit, to the extreme right (low order) position of the base number of the ISSN: 0317-8471</li>
 </ol>
+</p>
+<p>
 If the remainder is 10, substitute an upper case X in the check digit position. If there is no remainder, put a zero in the check digit position.
 
 and the code for c# is this:
-
+</p>
 {% highlight csharp %}
 public class Mod11
     {
@@ -53,9 +57,11 @@ public class Mod11
         }
     }
 {% endhighlight %}
+<p>
 as you can see is not a difficult code is a short code but requires a little of logic.
 </br>
 References:
 <ul>
 <li><a href="http://www.pgrocer.net/Cis51/mod11.html" target="_blank">http://www.pgrocer.net/Cis51/mod11.html</a></li>
 </ul>
+</p>

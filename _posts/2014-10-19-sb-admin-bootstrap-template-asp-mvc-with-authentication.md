@@ -1,6 +1,6 @@
 ---
 layout: post
-title: sb-admin bootstrap template with ASP MVC and Owin Authentication
+title: sb-admin bootstrap template with ASP MVC
 comments: true
 description: sb-admin bootstrap template with ASP MVC and Owin Authentication
 published: true

@@ -19,9 +19,16 @@ meta:
   publicize_twitter_user: levb20
   _wpas_skip_922231: '1'
 ---
-This is a little example how to return dynamic result from database to a Razor View. The question is? when I can use this or in where case? well, basically when someone request an specific report that you need to use a pivot table, with Crystal Reports is really easy, Crystal does it for you with drag and drop, but if you want to retrieve the data only for display in a view, you can do this:
-Using the NorthWind database, generate a Stored Procedure that returns the dynamic pivot table like this:
 
+<p align="justify">
+This is a little example how to return dynamic result from database to a Razor View. The question is? when I can use this or in where case? 
+well, basically when someone request an specific report that you need to use a pivot table, with Crystal Reports is really easy, Crystal 
+does it for you with drag and drop, but if you want to retrieve the data only for display in a view, you can do it something like this
+</p>
+
+<p align="justify">
+Using the NorthWind database, generate a Stored Procedure that returns the dynamic pivot table like this
+</p>
 {% highlight sql %}
 USE [Northwind]
 GO
@@ -62,9 +69,10 @@ SET @sql = N'SELECT *
 EXEC sp_executesql @sql
 
 {% endhighlight %}
+<p align="justify">
 Then we could use a raw SQL query because EF doesn't support if you want to use dynamic query context, and we can make using TypeBuilder option and ExpandoObject object. It has little performance overhead with this:
 -- Repository Services
-
+</p>
 {% highlight csharp %}
 public List<Dictionary<string, object>> Read(DbDataReader reader)
 {
@@ -82,8 +90,10 @@ public List<Dictionary<string, object>> Read(DbDataReader reader)
 return expandolist;
 }
 {% endhighlight %}
+<p align="justify">
 so now, with this we have a "Dictionary" object from dynamic object and using it you can work easily at design time rather then wait until runtime using "dynamic" object. I'm using Dependency Injection with Unity as a IoC, so in my controller I get this:
 -- Controller
+</p>
 {% highlight csharp %}
 public ActionResult DynamicIndex()
 {
@@ -100,7 +110,9 @@ public ActionResult DynamicIndex()
   }
 }
 {% endhighlight %}
+<p align="justify">
 and finally in so at the view end i can get name of this dynamic properties with Value like this:
+</p>
 {% highlight csharp %}
 @model List<Dictionary<string, object>>
 @{
@@ -124,7 +136,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
   }
 </table>
 {% endhighlight %}
-
+<p align="justify">
 and you got this:
 </br>
 <a href="http://lvasquezdotcom.files.wordpress.com/2013/08/dynamicdata.jpg"><img src="http://lvasquezdotcom.files.wordpress.com/2013/08/dynamicdata.jpg" alt="DynamicData" width="963" height="587" class="aligncenter size-full wp-image-242" /></a>
@@ -136,3 +148,4 @@ references:
 <a href="http://stackoverflow.com/questions/15732340/database-context-and-return-dynamic-result-set-in-asp-net-mvc" target="_blank">http://stackoverflow.com/questions/15732340/database-context-and-return-dynamic-result-set-in-asp-net-mvc</a>
 </br>
 <a href="http://geeks.ms/blogs/ozonicco/archive/2007/12/28/implementaci-243-n-de-pivot-din-225-mico.aspx" target="_blank">http://geeks.ms/blogs/ozonicco/archive/2007/12/28/implementaci-243-n-de-pivot-din-225-mico.aspx</a>
+</p>

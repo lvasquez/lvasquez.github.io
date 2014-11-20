@@ -1,44 +1,44 @@
-# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
-
-paginate: 10 # pagination based on number of posts
-paginate_path: "page:num"
-exclude: ["README.md"] # files to exclude
-pygments: true
-
-title: Luis' Blog
-description: .net Rocks!!
+# Site settings
+title:       Lui's Blog
+email:       levb20@gmail.com
+author:      Luis Vasquez
+description: "Software Development!, Open Source, Coffee and Beers =)"
 disqus_shortname: lvasquez20
-url: http://lvasquez.github.io
-author:
-  name: Luis Vásquez
-  email: levb20@hotmail.com
-  github: lvasquez
-  twitter: levb20
-  bio: Software Development!<br/>Open Source<br/>Coffee and Beers =)
-  email_md5: 63b699e76ea5e7891f6e60b7825777a6
-markdown: rdiscount
-rss_path: feed.xml
-categories_path: categories.html
-archives_path: archives.html
-tags_path: tags.html
-about_path: about.html
-encoding: utf-8
-
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+url:         http://lvasquez.github.io
 timezone: America/Guatemala
-future: true
-markdown: kramdown
+
+# Google Analytics
+google_analytics_tracking_id: UA-47464063-1
 
 # Disqus Comments
 disqus_short_name: impossiblethoughts
 disqus_show_comment_count: true
 
-# Google Analytics
-google_analytics_tracking_id: UA-47464063-1
+# Optional features
+animated:           false
+show_related_posts: false
+show_post_footers:  false
 
+# Social icons
+show_social_icons: true
+github_username: lvasquez
+twitter_username: levb20
+google_plus_id:
+linkedin_username:
+bitcoin_url:
+paypal_url:
+flattr_button:
+
+# Build settings
+markdown:     kramdown
+permalink:    pretty
+paginate:     4
+sass:
+  compressed: true
+  
 # https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink:   /:year/:month/:day/:title/
-
+  
 include: [".htaccess"]
 
 BASE_PATH:

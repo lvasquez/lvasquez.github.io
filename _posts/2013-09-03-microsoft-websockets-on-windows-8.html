@@ -22,7 +22,7 @@ meta:
 ---
 <p>
 This is a little example that i found about one of the new features support of Windows 8 and that's a native support for Websockets on server side. At the end of the post, i put some references about why websockets, the original code example, the websockets api client documentation, etc... and you can download the sourcecode of this example for <a href="https://github.com/lvasquez/Microsoft-WebSockets-Example" target="_blank">here!!</a>
-</p>
+
 So first we need to preparate the server side.
 
 Note: On the server side, we can host our WebSocket server through any one of the ways below:
@@ -31,30 +31,39 @@ Note: On the server side, we can host our WebSocket server through any one of th
 	<li>Creating a <strong>WCF</strong> service with <strong> <code>CallbackContract</code> </strong>and the new <code>netHttpBinding</code></li>
 	<li>Using <strong><code>WebSocketHandler</code> </strong>or <strong> </strong><code>WebSocketHost</code> provided in <em><strong>Microsoft.WebSockets.dll</strong></em></li>
 </ul>
+<p>
 On the client web side, HTML 5 provides WebSocket APIs and <strong>jQuery </strong> wraps those APIs for easier usage.
-
+</p>
+<p>
 If we want to create a client side application, we can do that through either of the ways below:
 <ul>
 	<li>Using the <code>ClientWebSocket</code> class (<code>System.Net.WebSockets</code>).</li>
 	<li>Creating a <strong>WCF </strong>client and referencing the WCF service which supports WebSocket connection.</li>
 </ul>
+</p>
 <p>
 <strong>NOTE</strong>: We can only use .NET WebSocket on <strong>Windows 8</strong>, <strong>Windows Server 2012</strong> and above, including both server-side and client-side applications. And the web server must be <strong>IIS 8</strong> and above. IIS 8 <code><em>Express</em></code> which is also packaged in Visual Studio 2012 does NOT support WebSocket at present. I hope Microsoft will add support in future.
-
+</p>
+<p>
 HTML 5 WebSocket API has no limitation on OS platform. The only limitation is the browser versions. Internet Explorer started supporting HTML 5 WebSocket since <strong>IE 10</strong>.
 
 To enable WebSocket on the server side, you need to install <strong>WebSocket Protocol</strong> for <strong>IIS 8</strong>. On Windows Server 2012, you could do that through <strong>Server Manager</strong> ->;<strong> Manage</strong> ->; <strong>Add Roles and Features</strong>. Expand the <strong>Web Server (IIS)</strong> role and check <strong>Web Server</strong> ->; <strong>Application Development</strong> ->;<strong> WebSocket Protocol</strong>. You may be asked to install dependencies and just allow them. Then install all your selections. <strong>Windows 8</strong> should be similar.
-</p>
+</br>
+<center>
 <a href="http://lvasquezdotcom.files.wordpress.com/2013/09/websockrt.jpg"><img src="http://lvasquezdotcom.files.wordpress.com/2013/09/websockrt.jpg" alt="websockrt" width="616" height="665" class="aligncenter size-full wp-image-306" /></a>
-
+</center>
+</br>
 <p>
 And now we can start to our project, first we need to create a ASP.NET Empty Web Application Project and in the Manage Nuget Packages search and install the Microsoft.Websockets package, also you can write the name of the nuget package in the Package Manager Console
+</p>
 </p>
 {% highlight text %}
 PM>; Install-Package Microsoft.WebSockets 
 {% endhighlight %}
+<p>
 so then we need to create out HttpHandler for intercepting requests made to your ASP.NET web application server
 and create a synchronous handler inheriting of IHttpHandler
+</p>
 {% highlight c# %}
 using System;
 using System.Collections.Generic;
@@ -87,8 +96,9 @@ namespace WebSocketExample
     }
 }
 {% endhighlight %}
+<p>
 the we need to create a class that inherits from WebSocketHandler and create our sockets methods
-
+</p>
 {% highlight csharp %}
 using System;
 using System.Collections.Generic;
@@ -126,7 +136,9 @@ namespace WebSocketExample
     }
 }
 {% endhighlight %}
+<p>
 and finally our view with a html file
+</p>
 {% highlight html %}
 <!DOCTYPE html/>;
 <html xmlns="http://www.w3.org/1999/xhtml;"/>
@@ -184,6 +196,7 @@ and finally our view with a html file
 </body>
 </html>
 {% endhighlight %}
+<p>
 and you get this:
 <a href="http://lvasquezdotcom.files.wordpress.com/2013/09/websockets.jpg"><img src="http://lvasquezdotcom.files.wordpress.com/2013/09/websockets.jpg" alt="websockets" width="1024" height="536" class="aligncenter size-full wp-image-308" /></a>
 
@@ -199,3 +212,4 @@ References:
 <li><a href="http://msdn.microsoft.com/en-us/library/ie/hh673567%28v=vs.85%29.aspx" target="_blank">http://msdn.microsoft.com/en-us/library/ie/hh673567%28v=vs.85%29.aspx</a></li>
 <li><a href="http://alexjmackey.wordpress.com/2012/05/01/websockets-with-asp-net-4-5-and-visual-studio-11/" target="_blank">http://alexjmackey.wordpress.com/2012/05/01/websockets-with-asp-net-4-5-and-visual-studio-11/</a></li>
 </ul>
+</p>

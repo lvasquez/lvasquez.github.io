@@ -93,12 +93,16 @@ INSERT INTO `dyn_groups` (`id`, `title`, `abbrev`) VALUES
 (5, 'Sidebar1', 'sidebar1'),
 (6, 'Sidebar2', 'sidebar2');
 {% endhighlight %}
+<p>
 and then you need to config your config folder the <strong>autoload.php</strong>
+</p>
 {% highlight php %}
 $autoload['libraries'] = array('database', 'Dynamic_menu');
 $autoload['helper'] = array('url', 'file');
 {% endhighlight %}
+<p>
 and the <strong>database.php</strong>
+</p>
 {% highlight php %}
 $active_group = 'default';
 $active_record = TRUE;
@@ -119,9 +123,10 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 {% endhighlight %}
+<p>
 and then we create our library menu called <strong>Dynamic_menu.php</strong> in the libraries folder
+</p>
 {% highlight php %}
-<?php
 /*
  * Dynmic_menu.php
  */
@@ -308,7 +313,9 @@ $html_out .= "\t\t\t".'<li>'.anchor($url.' '.$this->class_parent, '<span>'.$titl
 /* End of file Dynamic_menu.php */
 /* Location: ../application/libraries/Dynamic_menu.php */
 {% endhighlight %}
+<p>
 and then my VIEW
+</p>
 {% highlight php %}
 <html >
 <head>
@@ -327,10 +334,8 @@ and then my VIEW
  
 </head>
 <body>
-<?php
     //echo base_url();
     echo $this->dynamic_menu->build_menu('1');
-?>
 <br />
 <p><br />Page rendered in {elapsed_time} seconds</p>
 <p><br /><a href="http://apycom.com/">jQuery Menus by Apycom</a></p>
