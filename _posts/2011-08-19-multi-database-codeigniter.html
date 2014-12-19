@@ -11,8 +11,11 @@ description: Working with More than One Database with CodeIgniter
 meta:
   _wpas_skip_twitter: '1'
 ---
+
+<p>
 Well, one of my favorite things of <a href="http://codeigniter.com/" target="_blank">CodeIgniter</a> is the possibility of can use multi database connections, and how it is?
 well first if you work with the 2.0.2 version of CodeIgniter you need to fix some bug in the <strong><em>DB_driver.php</em></strong> that you can find in the database folder on the framework and you need to find the simple query function (function simple_query($sql)), so this will be the original function
+</p>
 
 {% highlight php %}
 function simple_query($sql)
@@ -24,15 +27,15 @@ function simple_query($sql)
 		return $this->_execute($sql);
 	}
 {% endhighlight %}
-
+<p>
 and just only need to add this line
-
+</p>
 {% highlight php %}
 $this->db_select();
 {% endhighlight %}
-
+<p>
 where? well before of the return like this
-
+</p>
 {% highlight php %}
 function simple_query($sql)
 	{
@@ -44,9 +47,9 @@ function simple_query($sql)
                  return $this->_execute($sql);
 	}
 {% endhighlight %}
-
+<p>
 and then you can follow the instructions at the codeigniter <a href="http://codeigniter.com/user_guide/database/connecting.html" target="_blank">user_guide</a>, anyway i will be post the other steps, so when you finish or fix the bug you need to go to your <em><strong>dababase.php</strong></em> config and add another active group or other string conexion like this
-
+</p>
 {% highlight php %}
 // original and default conexion
 $active_group = "default";
@@ -82,10 +85,10 @@ $db['db2']['cachedir'] = "";
 $db['db2']['char_set'] = "utf8";
 $db['db2']['dbcollat'] = "utf8_general_ci";
 {% endhighlight %}
-
+<p>
 and you can add another strings if you want, so has you see you can connect to other server if you want too, so if you used more of one database connection you need to remove in the array libraries <em><strong>autoload.php</strong></em> the database library.
 So when you need to call some string of connection in your model only need something like this
-
+</p>
 {% highlight php %}
 // results query database 1
 $this->default_db = $this->load->database('default', true);
@@ -95,5 +98,6 @@ $this->default_db = $this->load->database('default', true);
 $this->db2_db = $this->load->database('db2', true);
    $q = $this->db2_db->query('select * from table');
 {% endhighlight %}
-
-and that's it, obviously there are other and many ways to do but this is a very simple way.
+<p>
+and that's it.
+</p>

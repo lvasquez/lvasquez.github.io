@@ -18,7 +18,10 @@ meta:
   geo_public: '0'
   publicize_twitter_user: levb20
 ---
+
+<p>
 If you need to connect to more database in Yii framework is very easy, like others frameworks with Yii you can connect with two or more databases in the same time and in the same workspace, you only need to write in your main.php file in config folder a second array like this:
+</p>
 {% highlight php %}
 // default string connection MySQL database
         'db'=>array(
@@ -37,7 +40,9 @@ If you need to connect to more database in Yii framework is very easy, like othe
             'charset' => 'utf8',
         ),
 {% endhighlight %}
+<p>
 and if you need to test your second connection you can create a function and write something like this:
+</p>
 {% highlight php %}
 $connection=Yii::app()->dbSql;
 $query = "UPDATE tbl_depto SET CODIGO=$model->CODIGO, DESCRIPCION='$model->DESCRIPCION'
@@ -45,4 +50,6 @@ where ID=$model->ID";
 $command=$connection->createCommand($query);
 $command->execute();
 {% endhighlight %}
+<p>
 and that’s it, and if you are Using Linux maybe you will get a little problems with the connection on SQL SERVER because when you install PHP on Linux, by default doesn’t install the PDO_DRIVER for MSSQL, i posted before how to fix this problem, and that’s it, really easy don’t you think
+</p>

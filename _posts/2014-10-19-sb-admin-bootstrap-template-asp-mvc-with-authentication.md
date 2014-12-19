@@ -16,8 +16,10 @@ tags:
 - csharp
 ---
 
-In my last post, I took the sb-admin bootstrap template and adapted to a ASP MVC project, now I added a Login with some Users and 
-Roles to access using the new security feature design for MVC 5, **[Microsoft Owin Authentication](http://blogs.msdn.com/b/webdev/archive/2013/07/03/understanding-owin-forms-authentication-in-mvc-5.aspx){:target="_blank"}**
+Working in a new project I found these really cool **[templates](http://startbootstrap.com/">http://startbootstrap.com/){:target="_blank"}** 
+for bootstrap and I took the **[sb-admin](http://startbootstrap.com/template-overviews/sb-admin){:target="_blank"}** template and adapted to 
+a ASP MVC project, and I added a Login with some Users and Roles to access using the new security feature design for MVC 5, 
+**[Microsoft Owin Authentication](http://blogs.msdn.com/b/webdev/archive/2013/07/03/understanding-owin-forms-authentication-in-mvc-5.aspx){:target="_blank"}**
 
 So when we run the project by default we get a Login view and we can access with these users:
 
@@ -61,4 +63,3 @@ But if we login as a **invite** user, we will have access only to two options on
 
 So here is the **[source code](https://github.com/lvasquez/sb-admin-bootstrap-template-asp-mvc-authentication){:target="_blank"}**.
 and any comments or suggestions feel free to do it.
-

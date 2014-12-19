@@ -25,7 +25,7 @@ meta:
 <p>
 A long long time that I not publish nothing about code, but today is the day =) and this is a little example that I created with ASP MVC 4 using Dependency Injection, <a href="http://automapper.codeplex.com/" target="_blank">Automapper</a>, <a href="http://msdn.microsoft.com/en-us/library/aa697427(v=vs.80).aspx" target="_blank">EF</a> and <a href="http://www.kendoui.com/" target="_blank">KendoUI</a>. I start to work with ASP MVC 4 a couple months ago and right now I love it!!
 In this sample i only want to show one way to use Dependency Injection with IoC, in my case I used Unity but you can use another options like:
-</p>
+
 <ul>
 <li>Castle Windsor</li>
 <li>Structure Map</li>
@@ -33,15 +33,18 @@ In this sample i only want to show one way to use Dependency Injection with IoC,
 <li>Autofac</li>
 <li>Ninject</li>
 </ul>
-
-The Sample has the NorthWind database with Entity Framework for my DomainModel, I used Automapper to mapping my DomainModels with my ViewModels and has two CRUD, the classic ASP MVC CRUD and the Kendo Grid simulate the CRUD.
-</br>
+</p>
+<p>
+The Sample has the NorthWind database with Entity Framework for my DomainModel, I used Automapper to mapping my DomainModels with my 
+ViewModels and has two CRUD, the classic ASP MVC CRUD and the Kendo Grid simulate the CRUD.
+</p>
+<p>
 So you can download the sourcecode at github here <a href="https://github.com/lvasquez/ASP-MVC4-Unity" target="_blank">https://github.com/lvasquez/ASP-MVC4-Unity</a>
-</br>
+</p>
+<p>
 So this is my interface ICategoriesServices
-
+</p>
 {% highlight csharp %}
-
  public interface ICategoriesServices
     {
         IEnumerable<Categories> GetAll();
@@ -55,11 +58,10 @@ So this is my interface ICategoriesServices
         Categories Delete(int id);
     }
 {% endhighlight %}
-
+<p>
 and my methods CategoriesServices:
-
+</p>
 {% highlight csharp %}
-
     public class CategoriesServices : ICategoriesServices
     {
 
@@ -121,21 +123,18 @@ and my methods CategoriesServices:
             }
         }
 
-    }
-	
+    }	
 {% endhighlight %}
-
+<p>
 using Unity i register my components
+</p>
 {% highlight csharp %}
-
 container.RegisterType<ICategoriesServices, CategoriesServices>();
-
 {% endhighlight %}
-
+<p>
 and finally I inject to my controller in the constructor
-
+</p>
 {% highlight csharp %}
-
  public class CategoriesController : Controller
     {
         readonly ICategoriesServices _categoriesServices;
@@ -242,11 +241,13 @@ Kendo CRUD
 <center>
 <a href="http://lvasquezdotcom.files.wordpress.com/2013/08/kendocrud.jpg"><img src="http://lvasquezdotcom.files.wordpress.com/2013/08/kendocrud.jpg" alt="kendoCRUD" width="1024" height="584" class="aligncenter size-full wp-image-288" /></a>
 </center>
-
-I hope that helps
-
+<br />
+<p>
 Some References:
+</p>
+<p>
 <ul>
 <li><a href="http://www.dotnet-tricks.com/Tutorial/dependencyinjection/632V140413-Dependency-Injection-in-ASP.NET-MVC-4-using-Unity-IoC-Container.html" target="_blank">http://www.dotnet-tricks.com/Tutorial/dependencyinjection/632V140413-Dependency-Injection-in-ASP.NET-MVC-4-using-Unity-IoC-Container.html</a></li>
 <li><a href="http://tecexplorer.blogspot.com/2013/01/using-automapper-with-aspnet-mvc.html" target="_blank">http://tecexplorer.blogspot.com/2013/01/using-automapper-with-aspnet-mvc.html</a></li>
 </ul>
+</p>

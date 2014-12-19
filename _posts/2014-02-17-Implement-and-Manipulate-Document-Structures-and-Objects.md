@@ -98,12 +98,12 @@ About the intermedia controls the idea is to use new features to HTML5 to embed 
 
 {% highlight html %}
 
-<video src="videos/What-is-HTML5.mp4" controls preload="none" width="640" height="360"></video>
+<video src="video/What-is-HTML5.mp4" controls preload="none" width="640" height="360"></video>
 
 {% endhighlight %}
 
 <center>
-<video src="{{ site.url }}/videos/What-is-HTML5.mp4" controls preload="none" width="640" height="360" poster="{{ site.url }}/images/html5-blog.png"></video>
+<video src="{{ site.url }}/media/What-is-HTML5.mp4" controls preload="none" width="640" height="360" poster="{{ site.url }}/images/html5-blog.png"></video>
 </center>
 
 and with the audio
@@ -118,7 +118,7 @@ and with the audio
 
 <center>
 <audio controls>
-  <source src="{{ site.url }}/audio/11_showcase_~_jaguar_xj220.mp3" type="audio/mp3">
+  <source src="{{ site.url }}/media/11_showcase_~_jaguar_xj220.mp3" type="audio/mp3">
 </audio>
 </center>
 
