@@ -7,7 +7,7 @@ published: true
 ---
 
 Here is a little example to get coordinates (latitude, longitude) on Google Maps and push markers, you can download 
-the source code from <a target="_blank" href="https://github.com/lvasquez/Google-Maps-Samples">here!!</a>
+the source code from **[here](https://github.com/lvasquez/Google-Maps-Samples){:target="_blank"}**.
 
 
 

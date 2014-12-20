@@ -16,7 +16,7 @@ tags:
 - csharp
 ---
 
-Working in a new project I found these really cool **[templates](http://startbootstrap.com/">http://startbootstrap.com/){:target="_blank"}** 
+Working in a new project I found these really cool **[templates](http://startbootstrap.com/){:target="_blank"}** 
 for bootstrap and I took the **[sb-admin](http://startbootstrap.com/template-overviews/sb-admin){:target="_blank"}** template and adapted to 
 a ASP MVC project, and I added a Login with some Users and Roles to access using the new security feature design for MVC 5, 
 **[Microsoft Owin Authentication](http://blogs.msdn.com/b/webdev/archive/2013/07/03/understanding-owin-forms-authentication-in-mvc-5.aspx){:target="_blank"}**
