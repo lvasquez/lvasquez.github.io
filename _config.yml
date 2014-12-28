@@ -30,14 +30,30 @@ paypal_url:
 flattr_button:
 
 # Build settings
-markdown:     kramdown
-permalink:    pretty
-paginate:     3
+future:      true
+markdown: kramdown
+highlighter: rouge
+permalink:	pretty
+paginate:     5
 sass:
   compressed: true
   
 # https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink:   /:year/:month/:day/:title/
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+  coderay:
+    coderay_line_numbers: 
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
   
 include: [".htaccess"]
 
