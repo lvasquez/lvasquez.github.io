@@ -5,7 +5,7 @@ comments: true
 description: A little dummy example with ASP WebApi, RavenDB, Autofac, KendoUI and Moq
 published: true
 categories:
-- .net
+- dotnet
 - ASP MVC
 tags:
 - csharp
