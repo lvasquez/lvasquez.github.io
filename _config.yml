@@ -31,9 +31,8 @@ flattr_button:
 
 # Build settings
 markdown: kramdown
-highlighter: rouge
-permalink:	pretty
-paginate:     5
+permalink: pretty
+paginate: 5
 sass:
   compressed: true
   
