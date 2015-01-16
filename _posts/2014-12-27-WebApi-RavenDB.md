@@ -17,17 +17,24 @@ tags:
 ---
 
 I worked in this little and maybe dummy example, because involve to many things for do it a simple thing, a simple CRUD but the idea
-is to show how can we combine all this stuff, because when I started this example, my idea it was to create a simple CRUD using **[ASP WebApi](http://msdn.microsoft.com/es-es/library/hh833994(v=vs.108).aspx){:target="_blank"}** 
+is to show how we can combine all this stuff in some stage. 
+
+When I started this example, my idea it was to create a simple CRUD using **[ASP WebApi](http://msdn.microsoft.com/es-es/library/hh833994(v=vs.108).aspx){:target="_blank"}** 
 with **[Kendo UI](http://demos.telerik.com/kendo-ui/){:target="_blank"}** component, but then I asked me, why not use **[RavenDB](http://ravendb.net/){:target="_blank"}** for my store because I already had configured the server side, and then, why not applied something of dependency injection but
 with this I needed to use a IoC, so use **[Autofac](http://autofac.org/){:target="_blank"}** but also I will needed something to testing my repositories, so I decided to use **[Moq](https://github.com/Moq/moq4/wiki/Quickstart){:target="_blank"}**. 
 
 So at the end I finished with to many things for a dummy CRUD, but the cool thing is how I scaled little by little with TDD used since the
 beginning. So here is the list of things that I used:
 
+Server Side:
+
 * **ASP Web Api**
 * **RavenDB**
 * **Autofac**
 * **Moq**
+
+Client Side:
+
 * **KendoUI**
 
 And this is my structure solution

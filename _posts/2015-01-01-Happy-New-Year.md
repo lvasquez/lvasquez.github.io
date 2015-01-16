@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Happy New Year Readers!"
-comments: true
+comments: false
 description: Happy New Year And Best Wishes
 published: true
 

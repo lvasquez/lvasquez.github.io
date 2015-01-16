@@ -23,109 +23,105 @@ So first we can create our Class
 
 {% highlight csharp %}
 [DataContract]
-    public class Person : IExtensibleDataObject
+public class Person : IExtensibleDataObject
+{
+    [DataMember()]
+    public string FirstName;
+    [DataMember]
+    public string LastName;
+    [DataMember()]
+    public int ID;
+	
+    public Person(string newfName, string newLName, int newID)
     {
-        [DataMember()]
-        public string FirstName;
-        [DataMember]
-        public string LastName;
-        [DataMember()]
-        public int ID;
-        public Person(string newfName, string newLName, int newID)
-        {
-            FirstName = newfName;
-            LastName = newLName;
-            ID = newID;
-        }
-        public Person() { }
-        private ExtensionDataObject extensionData_Value;
-        // this illustrates using the versioning ExtensionData property, which is not used
-        public ExtensionDataObject ExtensionData
-        {
-            get
-            {
-                return extensionData_Value;
-            }
-            set
-            {
-                extensionData_Value = value;
-            }
-        }
+        FirstName = newfName;
+        LastName = newLName;
+        ID = newID;
     }
+    public Person() { }
+    private ExtensionDataObject extensionData_Value;
+    // this illustrates using the versioning ExtensionData property, which is not used
+    public ExtensionDataObject ExtensionData
+    {
+        get { return extensionData_Value; }
+        set { extensionData_Value = value; }
+    }
+}
 {% endhighlight %}
 
 then our Generic Serialize and Deserialize functions
 
 {% highlight csharp %}
  public class GenericDataContractSerializer<T>
+{
+    public static string SerializeObject(T obj)
     {
-        public static string SerializeObject(T obj)
+        try
         {
-            try
-            {
-                var xmlSerializer = new XmlSerializer(typeof(T));
-                var stringBuilder = new StringBuilder();
-                var stringWriter = new StringWriter(stringBuilder);
-                xmlSerializer.Serialize(stringWriter, obj);
-                return stringBuilder.ToString();
-            }
-            catch (Exception exception)
-            {
-                throw new Exception("Failed to serialize data contract object to xml string:", exception);
-            }
+            var xmlSerializer = new XmlSerializer(typeof(T));
+            var stringBuilder = new StringBuilder();
+            var stringWriter = new StringWriter(stringBuilder);
+            xmlSerializer.Serialize(stringWriter, obj);
+			
+            return stringBuilder.ToString();
         }
-        /// <summary>
-        /// DeserializeXml
-        /// </summary>
-        /// <param name="xml"></param>
-        /// <returns></returns>
-        public static T DeserializeXml(string xml)
+        catch (Exception exception)
         {
-            try
-            {
-                var xmlSerializer = new XmlSerializer(typeof(T));
-                return (T)xmlSerializer.Deserialize(new StringReader(xml));
-            }
-            catch (Exception exception)
-            {
-                throw new Exception("Failed to deserialize xml string to data contract object:", exception);
-            }
+            throw new Exception("Failed to serialize data contract object to xml string:", exception);
         }
     }
+    /// <summary>
+    /// DeserializeXml
+    /// </summary>
+    /// <param name="xml"></param>
+    /// <returns></returns>
+    public static T DeserializeXml(string xml)
+    {
+        try
+        {
+            var xmlSerializer = new XmlSerializer(typeof(T));
+            return (T)xmlSerializer.Deserialize(new StringReader(xml));
+        }
+        catch (Exception exception)
+        {
+            throw new Exception("Failed to deserialize xml string to data contract object:", exception);
+        }
+    }
+}
 {% endhighlight %}
 
 Our interface Service
 
 {% highlight csharp %}
-  [ServiceContract]
-    public interface IService1
-    {
-        [OperationContract]
-        string Serialize();
+[ServiceContract]
+public interface IService1
+{
+    [OperationContract]
+    string Serialize();
 
-        [OperationContract]
-        Person DesSerialize(string xmlString);
-    }
+    [OperationContract]
+    Person DesSerialize(string xmlString);
+}
 {% endhighlight %}
 
 Our functions inheritance from Interface
 
 {% highlight csharp %}
  public class Service1 : IService1
+{
+    public string Serialize()
     {
-        public string Serialize()
-        {
-            Person person = new Person("Santa", "Clause", 0929);
-            string xmlString = GenericDataContractSerializer<Person>.SerializeObject(person);
-            return xmlString;
-        }
-
-        public Person DesSerialize(string xmlString)
-        {
-            Person dPerson = GenericDataContractSerializer<Person>.DeserializeXml(xmlString);
-            return dPerson;
-        }
+        Person person = new Person("Santa", "Clause", 0929);
+        string xmlString = GenericDataContractSerializer<Person>.SerializeObject(person);
+        return xmlString;
     }
+
+    public Person DesSerialize(string xmlString)
+    {
+        Person dPerson = GenericDataContractSerializer<Person>.DeserializeXml(xmlString);
+        return dPerson;
+    }
+}
 {% endhighlight %}
 
 So if you are working with EF you can use things like Automapper to mapping the new object to the Entity object and Insert or Update the data.

@@ -1,2 +1,2 @@
 
-[lvasquez.github.io](http://www.lvasquez.github.io)
+[lvasquez.github.io](http://lvasquez.github.io)
