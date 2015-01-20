@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ASP Web Api and RavenDB
+title: ASP Web Api, RavenDB and KendoUI
 comments: true
 description: A little dummy example with ASP WebApi, RavenDB, Autofac, KendoUI and Moq
 published: true
