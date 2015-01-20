@@ -17,7 +17,7 @@ Playing a little with **[Express](http://expressjs.com/){:target="_blank"}** and
 and Mysql, I'm using right now the new release of **[JavaScript I/O](https://iojs.org/){:target="_blank"}**, but if you are using nodeJs doesn't matter because the npm packages are the same.
 
 If you saw my older posts maybe you noticed that I like to use **[KendoUI](http://demos.telerik.com/kendo-ui/){:target="_blank"}** components, and in this case it will be not the exception. I like 
-the Kendo UI components because are really easy to use and I always like show that we can use this components with different technologies with the same functionality. 
+the Kendo UI components because are really easy to use and I always like show that we can use these components with different technologies with the same functionality. 
 If you saw one of my last posts, I used **[ASP WebApi](http://www.asp.net/web-api/){:target="_blank"}** with **[RavenDB](http://ravendb.net/){:target="_blank"}** in the server side but this time I will use Express and Mysql.
 
 So these are the technologies used
