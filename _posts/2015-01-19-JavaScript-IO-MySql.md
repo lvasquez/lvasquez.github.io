@@ -20,7 +20,7 @@ If you saw my older posts maybe you noticed that I like to use **[KendoUI](http:
 the Kendo UI components because are really easy to use and I always like show that we can use this components with different technologies with the same functionality. 
 If you saw one of my last posts, I used ASP WebApi with RavenDB in the server side but this time I will use Express and Mysql.
 
-So basically these are the technologies used
+So these are the technologies used
 
 Server Side:
 
@@ -40,7 +40,14 @@ the structure project
     * **customers.js** 
 * **server.js** 
 
-server.js file
+for the example to work, we need the following packages
+
+* express
+* body-parser
+* multer
+* mysql
+
+So this will be our server.js file
 
 {% highlight javascript %}
 var express = require('express'),
@@ -67,7 +74,7 @@ app.put('/customers/:id', customer.updateCustomer);
 app.delete('/customers/:id', customer.deleteCustomer);
 
 app.listen(app.get('port'), function() {
-	console.log("Express server listening on port " + app.get('port'));
+    console.log("Express server listening on port " + app.get('port'));
 });
 {% endhighlight %}
 
@@ -94,28 +101,28 @@ exports.findAll = function(req, res) {
 // GET/Id
 exports.findById = function(req, res) {
     var id = req.params.id;
-	var sql    = 'SELECT Id, name, address, phone, email, status FROM customer WHERE Id = ' + connection.escape(id);
-	connection.query(sql, function(err, results) {
-	  if (err) throw err;		  
-		res.send(results);
-	});
+    var sql = 'SELECT Id, name, address, phone, email, status FROM customer WHERE Id = ' + connection.escape(id);
+    connection.query(sql, function(err, results) {
+        if (err) throw err;		  
+            res.send(results);
+        });
 };
 
 // POST
 exports.addCustomer = function(req, res) {
     var customer = req.body;
     if (customer.status == 'true')
-		customer.status = 1;
-	else
-		customer.status = 0;
+        customer.status = 1;
+    else
+        customer.status = 0;
 		
     console.log('Adding customer: ' + JSON.stringify(customer)); 	
-	connection.query('INSERT INTO customer SET ?', customer, function(err, result) {
-	  if (err) throw err;
+    connection.query('INSERT INTO customer SET ?', customer, function(err, result) {
+        if (err) throw err;
 
-		console.log('Success: ' + JSON.stringify(result));
-		res.send(customer);
-	});
+            console.log('Success: ' + JSON.stringify(result));
+        res.send(customer);
+    });
 };
 
 // PUT
@@ -125,29 +132,29 @@ exports.updateCustomer = function(req, res) {
     delete customer._id;
     	
     if (customer.status == 'true')
-		customer.status = 1;
-	else
-		customer.status = 0;
+        customer.status = 1;
+    else
+        customer.status = 0;
 
-	console.log('Updating customer: ' + id);
-	connection.query('UPDATE customer SET name = ?, address = ?, phone = ?, email = ?, status = ? WHERE Id = ?', [customer.name, customer.address, customer.phone, customer.email, customer.status, id],  function (err, result) {
-		if (err) throw err;
+    console.log('Updating customer: ' + id);
+    connection.query('UPDATE customer SET name = ?, address = ?, phone = ?, email = ?, status = ? WHERE Id = ?', [customer.name, customer.address, customer.phone, customer.email, customer.status, id],  function (err, result) {
+        if (err) throw err;
 
-		console.log('Updated: ' + JSON.stringify(result));
-		res.send(customer);
-	})
+        console.log('Updated: ' + JSON.stringify(result));
+        res.send(customer);
+    })
 };
 
 // DELETE
 exports.deleteCustomer = function(req, res) {
     var id = req.params.id;
     console.log('Deleting customer: ' + id);
-	connection.query('DELETE FROM customer WHERE Id = ' + connection.escape(id), function (err, result) {
-		if (err) throw err;
+    connection.query('DELETE FROM customer WHERE Id = ' + connection.escape(id), function (err, result) {
+        if (err) throw err;
 
-		console.log('deleted ' + result.affectedRows + ' rows');
-		res.send(req.body);
-	})	
+        console.log('deleted ' + result.affectedRows + ' rows');
+        res.send(req.body);
+    })	
 };
 {% endhighlight %}
 
@@ -177,16 +184,16 @@ index.html file
                  type: "POST"
              },
              update: {
-			    url : function (item) {
-					return 'http://localhost:3000/customers/' + item.Id;
-				 },
+                 url : function (item) {
+                     return 'http://localhost:3000/customers/' + item.Id;
+                 },
                  dataType: "json",
                  type: "PUT"
              },
              destroy: {
                  url : function (item) {
-					return 'http://localhost:3000/customers/' + item.Id;
-				 },
+                     return 'http://localhost:3000/customers/' + item.Id;
+                 },
                  dataType: "json",
                  type: "DELETE"
              }
@@ -242,7 +249,7 @@ index.html file
                 {
                     field: "status",
                     title: "Status",
-					template: '<input type="checkbox" #=status ? "checked=checked" : "" # disabled="disabled" ></input>'
+                    template: '<input type="checkbox" #=status ? "checked=checked" : "" # disabled="disabled" ></input>'
                 },
                 {
                     command: ["edit", "destroy"],
