@@ -32,14 +32,6 @@ Client Side:
 
 * **KendoUI**
 
-the structure project
-
-* **public**
-    * **index.html**
-* **routes**
-    * **customers.js** 
-* **server.js** 
-
 for the example to work, we need the following packages
 
 * express
@@ -267,3 +259,6 @@ index.html file
 <center>
 <img alt="nlogConsole" src="/images/nodejs-mysql2.png">
 </center>
+<br>
+
+Source Code **[here!](https://github.com/lvasquez/Express-Mysql){:target="_blank"}**.
