@@ -6,6 +6,8 @@ permalink: /about/
 
 Hey there! my name is Luis, I’m a software developer, MCP, MVC and BDD/TDD guy, Geek, drinker, bikes and cats lover and once upon a time 
 guitar player and Gamer.
+<br>
+<br>
 
 #### What I do
 
