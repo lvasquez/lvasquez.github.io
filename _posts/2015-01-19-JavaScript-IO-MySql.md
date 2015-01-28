@@ -1,6 +1,6 @@
 ---
 layout: post
-title: JavaScript I/O, Express, MySql and KendoUI
+title: JavaScript I/O, ExpressJS, MySql and KendoUI
 comments: true
 description: Example with JavaScript I/O, Express, MySql and KendoUI
 published: true
@@ -8,17 +8,17 @@ categories:
 - JavaScript I/O
 tags:
 - JavaScript I/O
-- Express
+- ExpressJS
 - MySql
 - KendoUI
 ---
 
-Playing a little with **[Express](http://expressjs.com/){:target="_blank"}** and without nothing to do at my work, I created a little example of a simple **CRUD** using Express 
+Playing a little with **[ExpressJS](http://expressjs.com/){:target="_blank"}** and without nothing to do at my work, I created a little example of a simple **CRUD** using Express 
 and Mysql, I'm using right now the new release of **[JavaScript I/O](https://iojs.org/){:target="_blank"}**, but if you are using nodeJs doesn't matter because the npm packages are the same.
 
 If you saw my older posts maybe you noticed that I like to use **[KendoUI](http://demos.telerik.com/kendo-ui/){:target="_blank"}** components, and in this case it will be not the exception. I like 
 the Kendo UI components because are really easy to use and I always like show that we can use these components with different technologies with the same functionality. 
-If you saw one of my last posts, I used **[ASP WebApi](http://www.asp.net/web-api/){:target="_blank"}** with **[RavenDB](http://ravendb.net/){:target="_blank"}** in the server side but this time I will use Express and Mysql.
+If you saw one of my last posts, I used **[ASP WebApi](http://www.asp.net/web-api/){:target="_blank"}** with **[RavenDB](http://ravendb.net/){:target="_blank"}** in the server side but this time I will use ExpressJS and Mysql.
 
 So these are the technologies used
 
