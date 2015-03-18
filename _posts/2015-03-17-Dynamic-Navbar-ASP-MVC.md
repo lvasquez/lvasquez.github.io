@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Dynamic Menu ASP MVC 5
+title: Dynamic Navbar ASP MVC 5
 comments: true
-description: Dynamic Menu Bootstrap with ASP MVC 5 
+description: Dynamic Navbar Bootstrap with ASP MVC 5 
 published: true
 categories:
 - ASP MVC
@@ -12,11 +12,12 @@ tags:
 - ASP
 - ASP MVC
 - Dynamic Menu ASP MVC
+- Dynamic Navbar ASP MVC with bootstrap
 - Authentication
 
 ---
 
-Hey, I want to share a little Dynamic Menu with Bootstrap and ASP MVC 5 but first I want to give thanks to **[fontenele](https://github.com/fontenele){:target="_blank"}**
+Hey, I want to share a little Dynamic Navbar with Bootstrap and ASP MVC 5 but first I want to give thanks to **[fontenele](https://github.com/fontenele){:target="_blank"}**
 for sharing the **[bootstrap navbar dropdowns](https://github.com/fontenele/bootstrap-navbar-dropdowns){:target="_blank"}** already done with bootstrap.
 
 So basically I just only adapted this to ASP MVC on dynamic way, and I included a **[Microsoft Owin Authentication](http://www.asp.net/aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server){:target="_blank"}** with a Login. Right now the 
