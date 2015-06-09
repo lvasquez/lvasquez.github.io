@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Hey there! my name is Luis, I’m a software developer, MCP, MVC and BDD/TDD guy, Geek, drinker, Arch Linux and Windows user =), bikes and cats lover and once upon a time 
+Hey there! my name is Luis, I’m a software developer, MCSD, BDD/TDD guy, Geek, drinker, Arch Linux and Windows user =), bikes and cats lover and once upon a time 
 guitar player and Gamer.
 <br>
 <br>
