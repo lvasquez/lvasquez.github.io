@@ -124,6 +124,16 @@ public class Test {
 
     }
 }
+
+public class customer 
+{
+    public int Id { get; set; }
+    public string name { get; set; }
+    public string address { get; set; }
+    public string phone { get; set; }
+    public string email { get; set; }
+    public bool status { get; set; }
+}
 {% endhighlight %}
 
 now save the file, building the file, in my case
