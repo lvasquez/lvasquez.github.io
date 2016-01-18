@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Just simple Authentication with ASP MVC 5 and Owin Security
+title: Custom Auth ASP MVC 5 with Owin Security
 comments: true
-description: Just simple Authentication with ASP MVC 5 using the new security features
+description: Example of Authentication with ASP MVC 5 using the new security features
 published: true
 categories:
 - ASP MVC

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: sb admin bootstrap 2 template with ASP MVC
+title: sb admin 2 bootstrap with ASP MVC
 comments: true
 description: sb admin 2 bootstrap template with ASP MVC 5
 published: true

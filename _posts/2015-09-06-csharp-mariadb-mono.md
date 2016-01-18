@@ -1,6 +1,6 @@
 ---
 layout: post
-title: C# and MariaDB on Linux
+title: C# and MySQL on Linux
 comments: true
 description: Example of using csharp and mariadb with mono on linux
 published: true
@@ -77,38 +77,38 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 public class Test {
-    public static void Main(string[] args) {
+  public static void Main(string[] args) {
         
-        try
+    try
+    {       
+        string connStr = "Server=localhost;User Id=root;Password=12345;Database=dotnetdb";
+        IList<customer> list = new List<customer>();
+
+        using (var connec = new MySqlConnection(connStr))
         {
-            string connStr = "Server=localhost;User Id=root;Password=12345;Database=dotnetdb";
-            IList<customer> list = new List<customer>();
-
-            using (var connec = new MySqlConnection(connStr))
+            using (var comman = new MySqlCommand())
             {
-                using (var comman = new MySqlCommand())
+                connec.Open();
+                comman.Connection = connec;
+                comman.CommandText = "select Id, name, address, phone, email, status from customers";
+                comman.CommandTimeout = 0;
+                MySqlDataReader reader = comman.ExecuteReader();
+
+                while ((reader.Read()))
                 {
-                    connec.Open();
-                    comman.Connection = connec;
-                    comman.CommandText = "select Id, name, address, phone, email, status from customers";
-                    comman.CommandTimeout = 0;
-                    MySqlDataReader reader = comman.ExecuteReader();
+                    customer ob = new customer();
 
-                    while ((reader.Read()))
-                    {
-                        customer ob = new customer();
-
-                        ob.Id = Convert.ToInt32(reader["Id"]);
-                        ob.name = Convert.ToString(reader["name"]);
-                        ob.address = Convert.ToString(reader["address"]);
-                        ob.phone = Convert.ToString(reader["phone"]);
-                        ob.email = Convert.ToString(reader["email"]);
-                        ob.status = Convert.ToBoolean(reader["status"]);
-                        list.Add(ob);
-                    }
-                    connec.Close();
+                    ob.Id = Convert.ToInt32(reader["Id"]);
+                    ob.name = Convert.ToString(reader["name"]);
+                    ob.address = Convert.ToString(reader["address"]);
+                    ob.phone = Convert.ToString(reader["phone"]);
+                    ob.email = Convert.ToString(reader["email"]);
+                    ob.status = Convert.ToBoolean(reader["status"]);
+                    list.Add(ob);
                 }
+                connec.Close();
             }
+        }
 
             foreach (var c in list)
             {

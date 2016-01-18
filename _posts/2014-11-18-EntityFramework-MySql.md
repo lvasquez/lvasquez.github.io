@@ -83,15 +83,15 @@ the Entity
 [Table("customer")]
 public class Customer
 {
-   [Key]
-   [Column("id_customer")]
-   public int id { get; set; }
+  [Key]
+  [Column("id_customer")]
+  public int id { get; set; }
 
-   public string customer { get; set; }
+  public string customer { get; set; }
 
-   public string nit { get; set; }
+  public string nit { get; set; }
 
-   public string address { get; set; }
+  public string address { get; set; }
 }
 {% endhighlight %}
 
@@ -100,9 +100,9 @@ the Context
 {% highlight csharp %}
 public partial class db_Entities : DbContext
 {
-   public db_Entities() : base(nameOrConnectionString: "MonkeyFist") { }
+  public db_Entities() : base(nameOrConnectionString: "MonkeyFist") { }
 
-   public DbSet<Customer> Customer { get; set; }
+  public DbSet<Customer> Customer { get; set; }
 }
 {% endhighlight %}
 

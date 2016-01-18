@@ -3,42 +3,63 @@ title:       Lui's Blog
 email:       levb20@gmail.com
 author:      Luis Vasquez
 description: "Software Development!, Open Source, Coffee and Beers =)"
-disqus_shortname: lvasquez20
-url:         http://lvasquez.github.io
-timezone: America/Guatemala
+baseurl:     ""
+url:         "http://lvasquez.github.io"
+date_format: "%b %-d, %Y"
 
-# Google Analytics
-google_analytics_tracking_id: UA-47464063-1
-
-# Disqus Comments
-disqus_short_name: impossiblethoughts
-disqus_show_comment_count: true
+# Google services
+google_analytics: UA-47464063-1
+google_verification:
 
 # Optional features
-animated:           false
-show_related_posts: false
-show_post_footers:  false
+animated:             false
+show_related_posts:   false
+show_post_footers:    false
+show_social_icons:    true
+ajaxify_contact_form: false
+
+# Disqus post comments
+# (leave blank to disable Disqus)
+disqus_shortname: impossiblethoughts
+
+# Facebook Comments plugin
+# (leave blank to disable Facebook Comments, otherwise set it to true)
+facebook_comments: 
+facebook_appid: 
+facebook_comments_number: 10
 
 # Social icons
-show_social_icons: true
 github_username: lvasquez
+bitbucket_username:
+stackoverflow_id:
 twitter_username: levb20
 google_plus_id:
-linkedin_username: levasquez
+linkedin_username:
+angellist_username:
+medium_id:
 bitcoin_url:
 paypal_url:
 flattr_button:
 
+# Post sharing icons
+show_sharing_icons: true
+share_text: 'Share this post!'
+# Change to 'true' to enable individual icons
+share_facebook: false
+share_twitter: true
+share_googleplus: false
+share_linkedin: false
+share_digg: false
+share_tumblr: false
+share_reddit: false
+share_stumbleupon: false
+share_hackernews: false
+
 # Build settings
-markdown: kramdown
-permalink: pretty
-paginate: 5
+markdown:     kramdown
+redcarpet:
+  extensions: ['smart', 'tables', 'with_toc_data']
+permalink:   /:year/:month/:day/:title/
+paginate:     4
 sass:
   compressed: true
-  
-# https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink:   /:year/:month/:day/:title/
-  
-include: [".htaccess"]
-
-BASE_PATH:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AngularJS and ExpressJS Project
+title: AngularJS and ExpressJS Example
 comments: true
 description: AngularJS and ExpressJS Project with Mysql
 published: true
