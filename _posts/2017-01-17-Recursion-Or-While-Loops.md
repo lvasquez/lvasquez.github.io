@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Recursion or while loops (Test fire to know if you are a programmer or not)
+title: Recursion or while loops
 comments: true
 description: Recursion or while loops (Test fire to know if you are a programmer or not)
 published: true
