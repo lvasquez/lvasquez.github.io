@@ -36,9 +36,7 @@ class Program
         {
             int t = i % 7; // mod to get the residue
             if (t == 0) // validate if the residue is equal to 0, should be a number
-            {
                  Console.WriteLine(i);
-            }
         }
     }
 }
@@ -78,23 +76,17 @@ public static void Main()
         int t = i % 7;
 
         if (t == 0)
-        {
            serial.Add(chars);
-        }
    
         if (i >= 10)
         {          
             if (chars[1] == '7')
-            {
                serial.Add(chars);
-            }
         }
         else
         {
             if (chars[0] == '7')
-            {
                serial.Add(chars);
-            }
         }
 
         foreach (var n in serial.Distinct())
@@ -120,9 +112,7 @@ public static void Main()
         int p = i % 10;
 
         if (t == 0 || p == 7)
-        {
-            Console.WriteLine(i);
-        }                         
+            Console.WriteLine(i);                        
     }
 }
 {% endhighlight %}
@@ -180,9 +170,8 @@ public static void serial(int i)
       int j = i % 10;
 
       if (j == 7 || t == 0)
-      {
         Console.WriteLine(i);               
-      }
+
       i++;
       serial(i);
     }
