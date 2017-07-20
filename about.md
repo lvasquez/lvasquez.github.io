@@ -4,16 +4,15 @@ title: About
 permalink: /about/
 ---
 
-Hey there! my name is Luis, Virgo born, TDD guy, Geek, drinker, Halo 5 and Dark Souls player, bikes and cats lover, MCSD - Web Applications and once upon a time guitar player.
+Hey there! my name is Luis, Virgo born, TDD guy, Geek, shower singer, videogames, beers, bikes and cats lover, MCSD - Web Applications and once upon a time guitar player.
 <br>
 <br>
 
 #### What I do
 
-I try to fight to dark side of the bad practices of developers evangelizing the light side with good practices and techniques.
+Well, I write code since a C line I/O on a MSP430 to a HTML form, mostly web stuff and message comunications stuff like RabbitMQ and SocketIO. I try to learn everything about everything, try to understand the existence of the universe with the help of the theories of special relativity and general relativity by Albert Einstein.
 
-Any question or feedback are always welcome, so feel free to contact me, and yeah, 
-my english sucks…  see ya
+Any question or feedback are always welcome, so feel free to contact me
 
 Thanks for Reading
 
