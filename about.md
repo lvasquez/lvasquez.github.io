@@ -10,7 +10,7 @@ Hey there! my name is Luis, Virgo born, TDD guy, Geek, shower singer, videogames
 
 #### What I do
 
-Well, I write code since a C line I/O on a MSP430 to a HTML form, mostly web stuff and message comunications stuff like RabbitMQ and SocketIO. I try to learn everything about everything, try to understand the existence of the universe with the help of the theories of special relativity and general relativity by Albert Einstein.
+I write code, mostly web stuff and message comunications. I try to learn everything about everything, try to understand the existence of the universe, the theories of special relativity and general relativity by Albert Einstein and those kind of weird stuff.
 
 Any question or feedback are always welcome, so feel free to contact me
 
