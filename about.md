@@ -10,9 +10,9 @@ Hey there! my name is Luis, Virgo born, TDD guy, Geek, shower singer, videogames
 
 #### What I do
 
-I write code, mostly web stuff and message comunications. I try to learn everything about everything, try to understand the existence of the universe, the theories of special relativity and general relativity by Albert Einstein and those kind of weird stuff.
+I write code, mostly web stuff and message comunications. I try to learn everything about everything, so usually I'm the guy that always question why? why this? why that? until I understand or have a kind of idea. I like to share ideas, knowledge and everything that can help to somebody, that's the propose of this blog.
 
-Any question or feedback are always welcome, so feel free to contact me
+So any question or feedback are always welcome, so feel free to contact me
 
 Thanks for Reading
 
