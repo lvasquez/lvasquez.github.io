@@ -5,7 +5,8 @@ permalink: /archives/
 ---
 
 <div id="archive-list" style="padding: 0 5%">
-{% for post in site.posts reverse %}
+{% assign reverse_posts = site.posts | reverse %}
+{% for post in reverse_posts reversed %}
 {% if post.layout == 'post' %}
 	{% include archive_post.html %}
 {% endif %}

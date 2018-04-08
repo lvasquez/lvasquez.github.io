@@ -55,11 +55,13 @@ share_reddit: false
 share_stumbleupon: false
 share_hackernews: false
 
+plugins: [jekyll-paginate]
+
 # Build settings
 markdown:     kramdown
+paginate: 4
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
 permalink:   /:year/:month/:day/:title/
-paginate:     4
 sass:
   compressed: true
