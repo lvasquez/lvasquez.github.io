@@ -16,7 +16,7 @@ tags:
 - RPA
 ---
 
-It's been a little while since my last post and I thought, you know, it's time to post something. So in the last months I started to using a RPA tool call UiPath, very curious and interesting, but the most interesting thing is the extensibility that you can do with nuget packages.
+It's been a little while since my last post and I thought, you know, it's time to post something. So in the last months I started to using a RPA tool called UiPath, very curious and interesting, but the most interesting thing is the extensibility that you can do with nuget packages.
 
 Following the official [documentation](https://activities.uipath.com/docs/creating-a-custom-activity){:target="_blank"} how to create a custom activity with UiPath I created one. The activity receive a DataTable and returns the data on a Pivot DataTable.
 
@@ -105,16 +105,15 @@ namespace PivotDataTableActivity
 }
 {% endhighlight %}
 
-
-Compile, package the .dll with [Nuget Package Explorer](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer/releases)
+Compile, package the .dll with [Nuget Package Explorer](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer/releases) and add the nuget package activity to the UiPath and will appears in the activities section. Then drag and drop the activity, send the DataTable input with the column and value that you want to pivot and done. 
 
 <div class="row previews" align="center">
-		<img class="img-responsive" alt="UiPath Pivot DataTable" src="/images/UiPathPivot.png">
+		<img class="img-responsive" alt="UiPath Pivot DataTable" src="/images/PivotCustomActivity.png">
 </div>
 
 ### Files:
 
-* [UiPath Project](/media/PivotDataTable.zip)
+* [UiPath Project Sample](/media/PivotDataTable.zip)
 * [Nuget Package Pivot DataTable Activity](/media/ActivitiesPivotTable.1.0.0.nupkg)
 
 So far so good, right!
