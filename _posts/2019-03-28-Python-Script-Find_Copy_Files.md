@@ -53,6 +53,12 @@ with open('file.csv', 'r') as csvFile:
 csvFile.close()
 {% endhighlight %}
 
+output wherever you run, Windows or Linux
+
+<div class="row previews" align="center">
+		<img class="img-responsive" alt="DataTable to Pivot DataTable" src="/images/output_find_file.png">
+</div>
+
 \o/
 
 So far so good, right!
