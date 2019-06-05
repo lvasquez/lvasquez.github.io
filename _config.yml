@@ -29,7 +29,7 @@ timezone:           America/Guatemala
 permalink:          /:year-:month-:day/:title/
 
 # Pagination
-paginate:           3
+paginate:           4
 paginate_path:      /page:num/
 
 # Markdown
@@ -72,7 +72,7 @@ defaults:
 gems:
   - jekyll-seo-tag
   - jekyll-paginate
-  
+
 # - jekyll-admin
 
 exclude:            [vendor]
