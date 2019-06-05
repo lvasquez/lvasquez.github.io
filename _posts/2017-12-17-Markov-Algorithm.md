@@ -2,7 +2,7 @@
 layout: post
 title: Markov Algorithm
 comments: true
-description: Markov Algorithm
+description: Markov Algorithm Exercise challenge
 published: true
 categories:
 - csharp

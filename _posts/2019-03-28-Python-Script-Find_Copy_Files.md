@@ -2,7 +2,7 @@
 layout: post
 title: Find and copy files from csv file
 comments: true
-description: Python script that Find and Copy File reading a CSV File
+description: Little python script that reads csv file, get data from a specific row, and find and copy file based from the row data
 published: true
 categories:
 - python

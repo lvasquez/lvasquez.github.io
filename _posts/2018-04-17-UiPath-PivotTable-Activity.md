@@ -2,7 +2,7 @@
 layout: post
 title: UiPath PivotTable Activity
 comments: true
-description: UiPath PivotTable Custom Activity from Visual Studio
+description: Custom UiPath Activity in order to input a DataTable and transform this table into a PivotTable
 published: true
 categories:
 - csharp
